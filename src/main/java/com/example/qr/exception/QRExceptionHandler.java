@@ -23,4 +23,12 @@ public class QRExceptionHandler {
         CustomExceptionMessage body = CustomExceptionMessage.of(HttpStatus.BAD_REQUEST, e.getMessage(), wr);
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(QRContentException.class)
+    public ResponseEntity<CustomExceptionMessage> handleQRContentIsEmptyException(QRContentException e,
+                                                                                  WebRequest wr)
+    {
+        CustomExceptionMessage body = CustomExceptionMessage.of(HttpStatus.BAD_REQUEST, e.getMessage(), wr);
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
 }
